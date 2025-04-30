@@ -1,38 +1,51 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flash Cards</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Карточки по молекулярной физике</title>
+  <style>
+    body { font-family: sans-serif; background: #f0f0f0; padding: 20px; }
+    .card {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 300px;
+      padding: 20px;
+      margin: 10px;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .card:hover { background: #e9f5ff; }
+    #cards { display: flex; flex-wrap: wrap; }
+  </style>
 </head>
 <body>
-  <div class="flashcards-container">
-    <div class="flashcard" id="card1">
-      <div class="card-front">
-        <h3>What is the capital of Kazakhstan?</h3>
-      </div>
-      <div class="card-back">
-        <h3>Nur-Sultan</h3>
-      </div>
-    </div>
-    <div class="flashcard" id="card2">
-      <div class="card-front">
-        <h3>What is the chemical symbol for water?</h3>
-      </div>
-      <div class="card-back">
-        <h3>H₂O</h3>
-      </div>
-    </div>
-    <div class="flashcard" id="card3">
-      <div class="card-front">
-        <h3>What is the square root of 64?</h3>
-      </div>
-      <div class="card-back">
-        <h3>8</h3>
-      </div>
-    </div>
-  </div>
-  <script src="script.js"></script>
+
+  <h1>Карточки: Молекулярная физика</h1>
+  <div id="cards"></div>
+
+  <script>
+    const cards = [
+      { question: "Что такое молекулярная физика?", answer: "Раздел физики, изучающий строение и свойства вещества на основе молекулярной теории." },
+      { question: "Формула средней кинетической энергии молекулы?", answer: "E = (3/2)kT" },
+      { question: "Что такое температура?", answer: "Мера средней кинетической энергии движения молекул." },
+      { question: "Единица измерения давления в СИ?", answer: "Паскаль (Па)" },
+      { question: "Что изучает термодинамика?", answer: "Процессы, связанные с теплообменом и превращением энергии." }
+    ];
+
+    const container = document.getElementById("cards");
+
+    cards.forEach(card => {
+      const div = document.createElement("div");
+      div.className = "card";
+      div.textContent = card.question;
+      div.onclick = () => {
+        div.textContent = div.textContent === card.question ? card.answer : card.question;
+      };
+      container.appendChild(div);
+    });
+  </script>
+
 </body>
 </html>
